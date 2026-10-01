@@ -1,0 +1,143 @@
+.architecture-section {
+  background-color: var(--bg-main);
+  position: relative;
+  overflow: hidden;
+}
+
+.architecture-visual-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-top: 2rem;
+}
+
+.arch-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+
+.arch-node {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  box-shadow: var(--shadow-sm);
+}
+
+.arch-node.active {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.arch-node.level-1 {
+  background-color: var(--text-primary);
+  color: var(--bg-main);
+  border-color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.arch-node.level-1.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+}
+
+.arch-node.level-1.core {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+.arch-node.level-1.core.active {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.arch-node.level-2 {
+  font-size: 1rem;
+}
+
+.arch-node.level-3 {
+  font-size: 0.875rem;
+  background-color: var(--bg-surface-hover);
+}
+
+.arch-node.level-4 {
+  background-color: transparent;
+  border-style: dashed;
+  color: var(--text-secondary);
+}
+
+.arch-connector {
+  background-color: var(--border-color);
+  z-index: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.arch-connector.vertical {
+  width: 2px;
+  height: 40px;
+}
+
+.arch-connector.vertical.short {
+  height: 20px;
+}
+
+.arch-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.arch-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.arch-connector.horizontal {
+  position: absolute;
+  height: 2px;
+}
+
+.arch-connector.horizontal.framework {
+  width: 66.66%;
+  left: 16.66%;
+  top: 0;
+}
+
+.arch-connector.horizontal.patterns {
+  width: 66.66%;
+  left: 16.66%;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .arch-node {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .arch-connector.horizontal {
+    width: 68%;
+    left: 16%;
+  }
+}

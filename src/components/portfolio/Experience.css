@@ -1,0 +1,183 @@
+.experience-section {
+  background-color: var(--bg-main);
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1.5rem;
+  min-width: 2rem;
+}
+
+.timeline-dot {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  z-index: 2;
+  box-shadow: 0 0 0 4px var(--bg-main);
+}
+
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background-color: var(--border-color);
+  margin-top: 0.5rem;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+/* Overlap Visual Indicator */
+.timeline-item.overlap .timeline-line {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--border-color),
+    var(--border-color) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+.timeline-item:last-child .timeline-content {
+  padding-bottom: 0;
+}
+
+.experience-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.experience-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-md);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.experience-role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.meta-item.company {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.overlap-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+  margin-top: 0.5rem;
+}
+
+.expand-btn {
+  color: var(--text-muted);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.experience-card:hover .expand-btn {
+  color: var(--accent-color);
+  background-color: var(--accent-light);
+}
+
+.experience-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out, margin-top 0.4s ease-out;
+  opacity: 0;
+}
+
+.experience-body.expanded {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.responsibilities-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.responsibilities-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.responsibilities-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.responsibilities-list li:last-child {
+  margin-bottom: 0;
+}
