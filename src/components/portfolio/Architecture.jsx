@@ -34,7 +34,6 @@ const Architecture = () => {
 
             {/* Frameworks Level */}
             <div className="arch-row">
-              <div className="arch-connector horizontal framework"></div>
               
               <div className="arch-col">
                 <div className="arch-connector vertical short"></div>
@@ -88,7 +87,6 @@ const Architecture = () => {
 
             {/* Architecture Patterns Level */}
             <div className="arch-row">
-              <div className="arch-connector horizontal patterns"></div>
               
               <div className="arch-col">
                 <div className="arch-connector vertical short"></div>

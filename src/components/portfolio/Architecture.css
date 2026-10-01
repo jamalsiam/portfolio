@@ -110,34 +110,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
 }
 
-.arch-connector.horizontal {
+/* Perfect horizontal lines using pseudo-elements */
+.arch-col::before {
+  content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
+  background-color: var(--border-color);
+  z-index: 1;
 }
 
-.arch-connector.horizontal.framework {
-  width: 66.66%;
-  left: 16.66%;
-  top: 0;
+/* First column line starts at center */
+.arch-col:first-child::before {
+  left: 50%;
 }
 
-.arch-connector.horizontal.patterns {
-  width: 66.66%;
-  left: 16.66%;
-  top: 0;
+/* Last column line ends at center */
+.arch-col:last-child::before {
+  right: 50%;
 }
 
 @media (max-width: 768px) {
   .arch-node {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-  }
-  
-  .arch-connector.horizontal {
-    width: 68%;
-    left: 16%;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+    width: 90%;
+    word-break: break-word;
   }
 }
