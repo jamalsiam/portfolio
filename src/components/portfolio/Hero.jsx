@@ -10,14 +10,14 @@ const Hero = () => {
     <section id="hero" className="hero-section">
       <Container className="hero-container">
         <div className="hero-content animate-slide-up">
-          <p className="hero-greeting">Hi, I'm {profile.name.split(' ')[0]}</p>
+          <p className="hero-greeting">Hi, I'm {profile.name}</p>
           <h1 className="hero-title">
             <span className="text-gradient">Senior Front-End</span> Architect & Lead
           </h1>
           <p className="hero-subtitle">
             Building scalable enterprise applications, modern frontend architectures, and high-performance user experiences.
           </p>
-          
+
           <div className="hero-actions">
             <a href="#projects" className="btn btn-primary">
               View My Work <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="node-tree">
             <div className="node root">JAMAL</div>
             <div className="line vertical"></div>
-            
+
             <div className="node-row split-3">
               <div className="line horizontal top"></div>
               <div className="node-col">
@@ -65,9 +65,9 @@ const Hero = () => {
               </div>
               <div className="line horizontal bottom"></div>
             </div>
-            
+
             <div className="line vertical"></div>
-            <div className="node core">Enterprise<br/>Systems</div>
+            <div className="node core">Enterprise<br />Systems</div>
             <div className="line vertical"></div>
 
             <div className="node-row split-3">
