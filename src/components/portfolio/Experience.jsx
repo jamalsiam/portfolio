@@ -18,10 +18,10 @@ const ExperienceCard = ({ exp }) => {
         </div>
         <div className="timeline-line"></div>
       </div>
-      
+
       <div className="timeline-content">
-        <div 
-          className="experience-card" 
+        <div
+          className="experience-card"
           onClick={() => setIsExpanded(!isExpanded)}
           role="button"
           tabIndex={0}
@@ -41,15 +41,15 @@ const ExperienceCard = ({ exp }) => {
                   <Calendar size={14} /> {exp.period}
                 </span>
               </div>
-              {isOverlap && (
+              {/* {isOverlap && (
                 <div className="overlap-badge">Concurrent Role</div>
-              )}
+              )} */}
             </div>
             <button className="expand-btn" aria-label="Toggle details">
               {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </button>
           </div>
-          
+
           <div className={`experience-body ${isExpanded ? 'expanded' : ''}`}>
             <ul className="responsibilities-list">
               {exp.responsibilities.map((resp, idx) => (
@@ -67,11 +67,11 @@ const Experience = () => {
   return (
     <AnimatedSection id="experience" className="experience-section">
       <Container>
-        <SectionTitle 
-          title="Experience Timeline" 
-          subtitle="A track record of engineering scalable platforms and leading development teams." 
+        <SectionTitle
+          title="Experience Timeline"
+          subtitle="A track record of engineering scalable platforms and leading development teams."
         />
-        
+
         <div className="timeline-container">
           {experience.map((exp, index) => (
             <ExperienceCard key={exp.id || index} exp={exp} />
