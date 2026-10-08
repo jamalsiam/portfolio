@@ -34,7 +34,7 @@ export const experience = [
     role: "Front-End Developer",
     company: "Katib Technology",
     location: "Amman, Jordan",
-    period: "06/2016 – 03/2019",
+    period: "06/2018 – 03/2019",
     responsibilities: [
       "Built responsive web applications and mobile interfaces utilizing React Native, Angular Framework, RxJS, Redux, and SCSS.",
       "Applied Object-Oriented Programming (OOP) principles and modular CSS architectures to deliver clean code."
