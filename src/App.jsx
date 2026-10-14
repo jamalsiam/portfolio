@@ -1,4 +1,3 @@
-import { useTheme } from './hooks/useTheme';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -12,11 +11,9 @@ import Skills from './components/portfolio/Skills';
 import Contact from './components/portfolio/Contact';
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
     <div className="app-container">
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Navbar />
       
       <main>
         <Hero />

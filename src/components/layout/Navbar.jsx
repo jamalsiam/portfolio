@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Container from './Container';
-import ThemeToggle from '../common/ThemeToggle';
+import ThemeCustomizer from '../common/ThemeCustomizer';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = ({ theme, toggleTheme }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -52,14 +52,14 @@ const Navbar = ({ theme, toggleTheme }) => {
           </ul>
           
           <div className="nav-actions">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <ThemeCustomizer />
             <a href="#contact" className="btn btn-primary btn-sm">Let's Talk</a>
           </div>
         </nav>
 
         {/* Mobile Toggle */}
         <div className="mobile-toggle">
-          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <ThemeCustomizer />
           <button 
             className="menu-btn" 
             onClick={toggleMobileMenu}
@@ -94,6 +94,9 @@ const Navbar = ({ theme, toggleTheme }) => {
               </a>
             </li>
           </ul>
+
+          {/* Dedicated mobile theme customizer panel inside drawer */}
+          <ThemeCustomizer inline={true} onAction={toggleMobileMenu} />
         </nav>
       </div>
     </header>

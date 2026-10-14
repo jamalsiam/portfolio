@@ -1,7 +1,7 @@
 import React from 'react';
 import { profile } from '../../data/profile';
 import Container from '../layout/Container';
-import { ArrowRight, Download, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { Github, Linkedin } from '../common/Icons';
 import './Hero.css';
 

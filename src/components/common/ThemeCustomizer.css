@@ -1,0 +1,286 @@
+/* Theme Customizer Container */
+.theme-customizer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Pill grouping the Mode Toggle and Palette Trigger */
+.theme-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.2rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.theme-pill:hover {
+  border-color: var(--border-hover);
+}
+
+/* Base button inside pill */
+.theme-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.theme-pill-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-surface-hover);
+}
+
+.theme-pill-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  z-index: 2;
+}
+
+.theme-pill-btn.active {
+  color: var(--accent-color);
+  background-color: var(--accent-light);
+}
+
+/* Accent dot indicator on palette button */
+.accent-dot-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-color);
+  box-shadow: 0 0 0 1.5px var(--bg-surface);
+  transition: background-color var(--transition-theme);
+}
+
+/* Dropdown Popover */
+.theme-popover {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  width: 290px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-xl);
+  z-index: 150;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: themePopoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top right;
+}
+
+@keyframes themePopoverFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-popover {
+    animation: none;
+  }
+}
+
+/* Popover Header */
+.theme-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-popover-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.theme-popover-status {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color: var(--accent-light);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+  text-transform: capitalize;
+}
+
+/* Section Group */
+.theme-section {
+  margin-bottom: 1.1rem;
+}
+
+.theme-section:last-child {
+  margin-bottom: 0;
+}
+
+.theme-section-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+/* Mode Segmented Control */
+.theme-mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem;
+  border-radius: var(--radius-lg);
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.mode-btn:hover {
+  color: var(--text-primary);
+}
+
+.mode-btn.active {
+  background-color: var(--bg-surface);
+  color: var(--accent-color);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* Accent Color Swatches Grid */
+.accent-swatches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.accent-swatch-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.4rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.accent-swatch-btn:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-surface-hover);
+  transform: translateY(-1px);
+}
+
+.accent-swatch-btn.active {
+  border-color: var(--accent-color);
+  background-color: var(--accent-light);
+  box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+.swatch-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-fast);
+}
+
+.accent-swatch-btn:hover .swatch-circle {
+  transform: scale(1.08);
+}
+
+.swatch-name {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.accent-swatch-btn.active .swatch-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Backdrop for closing popover when clicking outside on mobile or desktop */
+.theme-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 140;
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   INLINE MOBILE THEME PANEL (for inside mobile nav drawer)
+   ========================================================================== */
+.mobile-theme-panel {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.mobile-theme-panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.mobile-theme-panel .theme-mode-toggle {
+  margin-bottom: 1.25rem;
+}
+
+.mobile-theme-panel .accent-swatches-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}

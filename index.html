@@ -4,7 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Senior Front-End Architect & Lead specializing in enterprise architecture, micro-frontends, and high-performance applications." />
     <title>Jamal Abu Siam | Senior Front-End Architect</title>
+    <script>
+      (function() {
+        try {
+          var storedMode = localStorage.getItem('portfolio-theme-mode') || localStorage.getItem('portfolio-theme');
+          var storedAccent = localStorage.getItem('portfolio-theme-accent');
+          var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var mode = (storedMode === 'dark' || storedMode === 'light') ? storedMode : (systemDark ? 'dark' : 'light');
+          var validAccents = ['blue', 'emerald', 'violet', 'amber', 'rose', 'cyan'];
+          var accent = validAccents.indexOf(storedAccent) !== -1 ? storedAccent : 'blue';
+          
+          document.documentElement.setAttribute('data-mode', mode);
+          document.documentElement.setAttribute('data-theme', mode);
+          document.documentElement.setAttribute('data-accent', accent);
+          document.documentElement.style.colorScheme = mode;
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,28 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/themeContextInstance';
+import { THEME_MODES, ACCENT_THEMES, DEFAULT_MODE, DEFAULT_ACCENT, getAccentTheme } from '../config/themes';
 
 export function useTheme() {
-  const [theme, setTheme] = useState(() => {
-    // Check localStorage first
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-    // Fall back to system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  });
-
-  useEffect(() => {
-    // Apply theme to document
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio-theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-
-  return { theme, toggleTheme };
+  const context = useContext(ThemeContext);
+  if (!context) {
+    return {
+      mode: DEFAULT_MODE,
+      accent: DEFAULT_ACCENT,
+      theme: DEFAULT_MODE,
+      setMode: () => {},
+      setAccent: () => {},
+      toggleMode: () => {},
+      toggleTheme: () => {},
+      currentAccent: getAccentTheme(DEFAULT_ACCENT),
+      accentList: ACCENT_THEMES,
+      modes: THEME_MODES,
+    };
+  }
+  return context;
 }

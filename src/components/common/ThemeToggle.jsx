@@ -1,21 +1,8 @@
 import React from 'react';
-import { Sun, Moon } from 'lucide-react';
-import './ThemeToggle.css';
+import ThemeCustomizer from './ThemeCustomizer';
 
-const ThemeToggle = ({ theme, toggleTheme }) => {
-  return (
-    <button 
-      className="theme-toggle" 
-      onClick={toggleTheme}
-      aria-label="Toggle theme"
-    >
-      {theme === 'light' ? (
-        <Moon size={20} className="icon-moon" />
-      ) : (
-        <Sun size={20} className="icon-sun" />
-      )}
-    </button>
-  );
+const ThemeToggle = (props) => {
+  return <ThemeCustomizer {...props} />;
 };
 
 export default ThemeToggle;

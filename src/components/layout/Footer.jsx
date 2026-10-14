@@ -5,6 +5,8 @@ import { Mail } from 'lucide-react';
 import { Github, Linkedin } from '../common/Icons';
 import './Footer.css';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -29,7 +31,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <p>&copy; {CURRENT_YEAR} {profile.name}. All rights reserved.</p>
         </div>
       </Container>
     </footer>

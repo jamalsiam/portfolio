@@ -50,7 +50,7 @@
 
 .contact-method-item:hover .contact-method-icon {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--accent-contrast, #ffffff);
   border-color: var(--accent-color);
 }
 

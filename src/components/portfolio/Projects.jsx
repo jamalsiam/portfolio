@@ -4,7 +4,7 @@ import Container from '../layout/Container';
 import SectionTitle from '../common/SectionTitle';
 import AnimatedSection from '../common/AnimatedSection';
 import Badge from '../common/Badge';
-import { ExternalLink, Layers, ShieldCheck, Terminal } from 'lucide-react';
+import { Layers, ShieldCheck, Terminal } from 'lucide-react';
 import './Projects.css';
 
 const getProjectIcon = (id) => {

@@ -36,11 +36,12 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: default;
   box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
 }
 
 .arch-node.active {
   transform: scale(1.05);
-  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+  box-shadow: var(--accent-shadow);
   border-color: var(--accent-color);
   color: var(--accent-color);
 }
@@ -55,7 +56,7 @@
 .arch-node.level-1.active {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
-  color: white;
+  color: var(--accent-contrast, #ffffff);
 }
 
 .arch-node.level-1.core {
@@ -115,7 +116,7 @@
   position: relative;
 }
 
-/* Perfect horizontal lines using pseudo-elements */
+/* Horizontal lines using pseudo-elements */
 .arch-col::before {
   content: '';
   position: absolute;
