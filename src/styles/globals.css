@@ -18,6 +18,9 @@ html {
 
 body {
   background-color: var(--bg-main);
+  background-image: var(--ambient-mesh);
+  background-attachment: fixed;
+  background-size: 100% 100%;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;

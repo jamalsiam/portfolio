@@ -38,7 +38,13 @@ const Navbar = () => {
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <Container className="navbar-container">
         <div className="navbar-logo">
-          <a href="#">JAMAL</a>
+          <a href="#" className="logo-link" aria-label="Jamal Abu Siam Homepage">
+            <span className="logo-emblem">JS</span>
+            <div className="logo-text">
+              <span className="logo-name">JAMAL</span>
+              <span className="logo-role">Lead Architect</span>
+            </div>
+          </a>
         </div>
 
         {/* Desktop Navigation */}
@@ -46,7 +52,7 @@ const Navbar = () => {
           <ul className="nav-links">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a href={link.href}>{link.name}</a>
+                <a href={link.href} className="nav-link-item">{link.name}</a>
               </li>
             ))}
           </ul>

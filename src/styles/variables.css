@@ -15,6 +15,24 @@
   --bg-surface-rgb: 255, 255, 255;
   --bg-overlay: rgba(15, 23, 42, 0.45);
 
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(226, 232, 240, 0.85);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+
+  /* Card Surfaces & Elevation */
+  --card-bg: #ffffff;
+  --card-bg-elevated: #ffffff;
+  --card-border: #e2e8f0;
+  --card-border-hover: rgba(var(--accent-color-rgb), 0.45);
+  --card-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 12px 28px -6px rgba(var(--accent-color-rgb), 0.15);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-online-glow: rgba(16, 185, 129, 0.3);
+
   /* Typography */
   --text-primary: #0f172a;
   --text-secondary: #475569;
@@ -60,6 +78,8 @@
   --accent-contrast: #ffffff;
   --accent-shadow: 0 10px 25px -5px rgba(var(--accent-color-rgb), 0.25);
   --accent-glow: 0 0 15px rgba(var(--accent-color-rgb), 0.2);
+  --ambient-mesh: radial-gradient(circle at 10% 20%, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 40%);
 }
 
 /* ==========================================================================
@@ -76,6 +96,24 @@
   --bg-surface-elevated: #1a1e29;
   --bg-surface-rgb: 20, 23, 32;
   --bg-overlay: rgba(0, 0, 0, 0.75);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(20, 23, 32, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+
+  /* Card Surfaces & Elevation */
+  --card-bg: #121622;
+  --card-bg-elevated: #181d2a;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(var(--accent-color-rgb), 0.5);
+  --card-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45);
+  --card-shadow-hover: 0 16px 36px -6px rgba(var(--accent-color-rgb), 0.3);
+  --card-gradient: linear-gradient(145deg, rgba(26, 31, 44, 0.95) 0%, rgba(18, 22, 33, 0.9) 100%);
+
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-online-glow: rgba(16, 185, 129, 0.4);
 
   /* Typography */
   --text-primary: #f8fafc;
@@ -104,6 +142,9 @@
   --accent-contrast: #ffffff;
   --accent-shadow: 0 10px 25px -5px rgba(var(--accent-color-rgb), 0.35);
   --accent-glow: 0 0 15px rgba(var(--accent-color-rgb), 0.3);
+  --ambient-mesh: radial-gradient(circle at 12% 15%, rgba(var(--accent-color-rgb), 0.16) 0%, transparent 45%),
+                  radial-gradient(circle at 88% 85%, rgba(var(--accent-color-rgb), 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.35) 0%, transparent 70%);
 }
 
 /* ==========================================================================

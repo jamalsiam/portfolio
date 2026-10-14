@@ -1,14 +1,24 @@
 export const skills = [
   {
-    category: "Frontend",
+    category: "Frontend & Cross-Platform",
     items: [
       "React",
       "React Native",
-      "Angular",
+      "Angular Framework",
       "Angular Signals",
+      "NodeJS",
+      "NestJS",
+      "ExpressJS",
+      "Firebase",
+      "MongoDB",
       "RxJS",
       "NgRx",
       "Redux",
+      "JavaScript",
+      "TypeScript",
+      "State Management Redux",
+      "Integrating RESTful APIs",
+      "Promises",
       "HTML5",
       "CSS3",
       "SCSS",
@@ -16,42 +26,63 @@ export const skills = [
       "Bootstrap",
       "Material Design",
       "Kendo UI",
-      "jQuery"
+      "jQuery",
+      "Responsive Web Design"
     ]
   },
   {
-    category: "Architecture",
+    category: "Architecture & Systems",
     items: [
       "Micro-Frontend Architecture",
       "Monorepos",
-      "REST APIs",
-      "OAuth 2.0",
-      "OIDC",
+      "Executive Control Center Apps",
+      "Government Correspondence Platforms",
+      "Enterprise Project Management (EPM) Systems",
       "Offline Sync",
-      "Document Annotation",
-      "E-Signatures",
-      "OOP"
+      "Document Annotation & E-Sign",
+      "OOP",
+      "OAuth 2.0 / OIDC",
+      "RESTful APIs"
     ]
   },
   {
-    category: "AI Integration",
+    category: "AI & Emerging Tech",
     items: [
       "AI Agents Integration",
-      "AI-Assisted Development",
-      "AI-Assisted Developer Tools"
+      "LLM Workflow Orchestration",
+      "AI-Assisted Developer Tools",
+      "Prompt Engineering",
+      "Autonomous Coding Agents",
+      "Intelligent UI Copilots"
     ]
   },
   {
-    category: "Engineering & Leadership",
+    category: "Tools & Workflows",
     items: [
-      "Performance Optimization",
+      "Azure DevOps",
+      "Git & GitHub",
+      "CI/CD Pipelines",
       "Code Reviews",
-      "Git",
-      "Responsive Design",
-      "Cross-Browser Compatibility",
+      "Performance Optimization",
+      "Vite & Webpack",
+      "Cross-Browser & Mobile Compatibility"
+    ]
+  },
+  {
+    category: "Soft Skills",
+    items: [
+      "Leadership",
+      "Team Collaboration",
+      "AI Tools",
       "Mentoring",
-      "Technical Leadership",
-      "Agile Mindset"
+      "Problem Solving",
+      "Critical Thinking",
+      "Adaptability",
+      "Agile Mindset",
+      "Communication",
+      "Emotional Intelligence",
+      "Time Management",
+      "Attention to Detail"
     ]
   }
 ];
