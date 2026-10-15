@@ -247,3 +247,9 @@
   flex-shrink: 0;
   margin-top: 0.25rem;
 }
+
+/* RTL Overrides for Experience Timeline */
+[dir="rtl"] .timeline-marker {
+  margin-right: 0;
+  margin-left: 1.75rem;
+}

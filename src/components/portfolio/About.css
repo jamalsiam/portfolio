@@ -558,3 +558,31 @@
   filter: blur(2px);
   border-radius: var(--radius-full);
 }
+
+/* RTL Overrides for About */
+[dir="rtl"] .quote-accent-bar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .quote-content {
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
+[dir="rtl"] .quote-role {
+  padding-left: 0;
+  padding-right: 0.75rem;
+  border-left: none;
+  border-right: 1px solid var(--border-color);
+}
+
+[dir="rtl"] .stat-card::after {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .language-progress-glow {
+  right: auto;
+  left: 0;
+}

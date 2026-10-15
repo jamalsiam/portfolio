@@ -1,5 +1,5 @@
 import React from 'react';
-import { profile } from '../../data/profile';
+import { useLanguage } from '../../hooks/useLanguage';
 import Container from '../layout/Container';
 import SectionTitle from '../common/SectionTitle';
 import AnimatedSection from '../common/AnimatedSection';
@@ -26,40 +26,24 @@ const getStatIcon = (index) => {
   }
 };
 
-const achievementMeta = [
-  {
-    icon: Layers,
-    category: "Architecture & Monorepos",
-    tag: "Enterprise Scale"
-  },
-  {
-    icon: Users,
-    category: "Engineering Leadership",
-    tag: "Team Velocity"
-  },
-  {
-    icon: Boxes,
-    category: "Design System & Shared Libs",
-    tag: "Modularity"
-  },
-  {
-    icon: Sparkles,
-    category: "AI Agents & Automation",
-    tag: "Next-Gen DevX"
-  }
-];
+const achievementIcons = [Layers, Users, Boxes, Sparkles];
 
 const About = () => {
+  const { content } = useLanguage();
+
   return (
     <AnimatedSection id="about" className="about-section">
       <Container>
         <div className="about-content">
           <div className="about-text">
-            <SectionTitle title="About Me" subtitle="Professional summary and technical leadership narrative." />
+            <SectionTitle 
+              title={content.about.title} 
+              subtitle={content.about.subtitle} 
+            />
             
             <div className="about-prose">
               <p>
-                {profile.summary}
+                {content.about.summary}
               </p>
             </div>
 
@@ -68,18 +52,18 @@ const About = () => {
               <div className="quote-accent-bar" aria-hidden="true"></div>
               <div className="quote-content">
                 <p className="quote-text">
-                  "Enterprise front-end architecture is about turning distributed complexity into resilient, unified experiences—combining micro-frontends, offline reliability, and intelligent AI workflows to scale engineering velocity."
+                  {content.about.quote}
                 </p>
                 <div className="quote-author-row">
-                  <span className="quote-author">Jamal Abu Siam</span>
-                  <span className="quote-role">Lead Front-End Architect</span>
+                  <span className="quote-author">{content.name}</span>
+                  <span className="quote-role">{content.about.quoteRole}</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="about-stats">
-            {profile.stats.map((stat, index) => (
+            {content.about.stats.map((stat, index) => (
               <div key={index} className="stat-card">
                 <div className="stat-icon-wrapper">
                   {getStatIcon(index)}
@@ -92,18 +76,17 @@ const About = () => {
         </div>
 
         {/* Key Achievements */}
-        {profile.achievements && profile.achievements.length > 0 && (
+        {content.about.achievements && content.about.achievements.length > 0 && (
           <div className="about-achievements">
             <div className="achievements-heading-wrap">
               <h3 className="achievements-heading">
-                <Award size={20} className="achievements-heading-icon" /> Key Achievements & Engineering Impact
+                <Award size={20} className="achievements-heading-icon" /> {content.about.achievementsHeading}
               </h3>
-              <span className="achievements-badge">Proven Production Outcomes</span>
+              <span className="achievements-badge">{content.about.achievementsBadge}</span>
             </div>
             <div className="achievements-grid">
-              {profile.achievements.map((item, idx) => {
-                const meta = achievementMeta[idx] || { icon: Award, category: "Engineering Impact", tag: "Enterprise" };
-                const IconComponent = meta.icon;
+              {content.about.achievements.map((item, idx) => {
+                const IconComponent = achievementIcons[idx % achievementIcons.length] || Award;
                 return (
                   <div key={idx} className="achievement-card">
                     <div className="achievement-card-top">
@@ -111,14 +94,14 @@ const About = () => {
                         <IconComponent size={20} className="achievement-icon" />
                       </div>
                       <div className="achievement-meta">
-                        <span className="achievement-category">{meta.category}</span>
-                        <span className="achievement-tag">{meta.tag}</span>
+                        <span className="achievement-category">{item.category}</span>
+                        <span className="achievement-tag">{item.tag}</span>
                       </div>
                       <div className="achievement-check-badge" title="Verified Achievement">
                         <Check size={12} strokeWidth={3} />
                       </div>
                     </div>
-                    <p className="achievement-text">{item}</p>
+                    <p className="achievement-text">{item.text}</p>
                   </div>
                 );
               })}
@@ -135,17 +118,17 @@ const About = () => {
               </div>
               <div className="credential-header-text">
                 <div className="credential-badges">
-                  <span className="credential-pill-accent">B.Sc. Degree</span>
-                  <span className="credential-pill-date">{profile.education.period}</span>
+                  <span className="credential-pill-accent">{content.about.education.badge}</span>
+                  <span className="credential-pill-date">{content.about.education.period}</span>
                 </div>
-                <h4 className="credential-title">{profile.education.degree}</h4>
-                <p className="credential-subtitle">{profile.education.institution}</p>
+                <h4 className="credential-title">{content.about.education.degree}</h4>
+                <p className="credential-subtitle">{content.about.education.institution}</p>
               </div>
             </div>
             <div className="coursework-section">
-              <span className="coursework-label">Core Coursework & Specializations:</span>
+              <span className="coursework-label">{content.about.education.courseworkLabel}</span>
               <div className="coursework-tags">
-                {profile.education.coursework.map((course, idx) => (
+                {content.about.education.coursework.map((course, idx) => (
                   <span key={idx} className="course-tag">
                     <span className="course-tag-dot"></span>
                     {course}
@@ -162,36 +145,32 @@ const About = () => {
               </div>
               <div className="credential-header-text">
                 <div className="credential-badges">
-                  <span className="credential-pill-accent">Global Reach</span>
+                  <span className="credential-pill-accent">{content.about.languages.badge}</span>
                 </div>
-                <h4 className="credential-title">Languages & Communication</h4>
-                <p className="credential-subtitle">Cross-border engineering collaboration</p>
+                <h4 className="credential-title">{content.about.languages.title}</h4>
+                <p className="credential-subtitle">{content.about.languages.subtitle}</p>
               </div>
             </div>
             <div className="languages-list">
-              {profile.languages.map((lang, idx) => {
-                const isArabic = lang.name === 'Arabic';
-                const percent = isArabic ? 100 : 92;
-                return (
-                  <div key={idx} className="language-item">
-                    <div className="language-info">
-                      <span className="language-name">{lang.name}</span>
-                      <div className="language-badge-wrap">
-                        <span className="language-level">{lang.proficiency}</span>
-                        <span className="language-percent">{percent}%</span>
-                      </div>
-                    </div>
-                    <div className="language-bar">
-                      <div 
-                        className="language-progress" 
-                        style={{ width: `${percent}%` }}
-                      >
-                        <span className="language-progress-glow"></span>
-                      </div>
+              {content.about.languages.items.map((lang, idx) => (
+                <div key={idx} className="language-item">
+                  <div className="language-info">
+                    <span className="language-name">{lang.name}</span>
+                    <div className="language-badge-wrap">
+                      <span className="language-level">{lang.proficiency}</span>
+                      <span className="language-percent">{lang.percent}%</span>
                     </div>
                   </div>
-                );
-              })}
+                  <div className="language-bar">
+                    <div 
+                      className="language-progress" 
+                      style={{ width: `${lang.percent}%` }}
+                    >
+                      <span className="language-progress-glow"></span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

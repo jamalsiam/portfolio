@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { profile } from '../../data/profile';
+import { useLanguage } from '../../hooks/useLanguage';
 import Container from '../layout/Container';
 import SectionTitle from '../common/SectionTitle';
 import AnimatedSection from '../common/AnimatedSection';
@@ -10,6 +11,7 @@ import './Contact.css';
 const Contact = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const { content, isRTL } = useLanguage();
 
   const handleCopyEmail = (e) => {
     e.preventDefault();
@@ -31,12 +33,12 @@ const Contact = () => {
         <div className="contact-container">
           <div className="contact-text">
             <SectionTitle 
-              title="Let's build something meaningful." 
-              subtitle="Currently open to new opportunities, engineering leadership, and architectural consulting." 
+              title={content.contact.title} 
+              subtitle={content.contact.subtitle} 
             />
             
             <p className="contact-description">
-              Whether you need to architect a complex enterprise platform, scale a high-velocity frontend team, or discuss modern web systems (Micro-Frontends, Angular Signals, React, AI Agents), my inbox is always open.
+              {content.contact.description}
             </p>
             
             {/* Direct Contact Items with 1-Click Copy */}
@@ -47,19 +49,19 @@ const Contact = () => {
                     <Mail size={22} />
                   </div>
                   <div className="contact-method-details">
-                    <span className="contact-method-label">Email Address</span>
-                    <span className="contact-method-value">{profile.email}</span>
+                    <span className="contact-method-label">{content.contact.emailLabel}</span>
+                    <span className="contact-method-value" dir="ltr">{profile.email}</span>
                   </div>
                 </a>
                 <button 
                   type="button" 
                   className="contact-copy-btn" 
                   onClick={handleCopyEmail}
-                  title="Copy email to clipboard"
-                  aria-label="Copy email"
+                  title={copiedEmail ? content.contact.copied : content.contact.copy}
+                  aria-label={content.contact.copy}
                 >
                   {copiedEmail ? <Check size={16} className="copied-icon" /> : <Copy size={16} />}
-                  <span className="copy-label">{copiedEmail ? 'Copied!' : 'Copy'}</span>
+                  <span className="copy-label">{copiedEmail ? content.contact.copied : content.contact.copy}</span>
                 </button>
               </div>
               
@@ -69,19 +71,19 @@ const Contact = () => {
                     <Phone size={22} />
                   </div>
                   <div className="contact-method-details">
-                    <span className="contact-method-label">Direct Phone</span>
-                    <span className="contact-method-value">{profile.phone}</span>
+                    <span className="contact-method-label">{content.contact.phoneLabel}</span>
+                    <span className="contact-method-value" dir="ltr">{profile.phone}</span>
                   </div>
                 </a>
                 <button 
                   type="button" 
                   className="contact-copy-btn" 
                   onClick={handleCopyPhone}
-                  title="Copy phone to clipboard"
-                  aria-label="Copy phone"
+                  title={copiedPhone ? content.contact.copied : content.contact.copy}
+                  aria-label={content.contact.copy}
                 >
                   {copiedPhone ? <Check size={16} className="copied-icon" /> : <Copy size={16} />}
-                  <span className="copy-label">{copiedPhone ? 'Copied!' : 'Copy'}</span>
+                  <span className="copy-label">{copiedPhone ? content.contact.copied : content.contact.copy}</span>
                 </button>
               </div>
             </div>
@@ -90,7 +92,7 @@ const Contact = () => {
             <div className="contact-meta-badge">
               <div className="meta-badge-item">
                 <MapPin size={15} className="meta-icon" />
-                <span>{profile.location}</span>
+                <span>{content.contact.locationBadge}</span>
               </div>
               <div className="meta-badge-divider"></div>
               <div className="meta-badge-item">
@@ -104,23 +106,25 @@ const Contact = () => {
           <div className="contact-actions-card">
             <div className="actions-card-header">
               <span className="action-status-pill">
-                <span className="status-dot"></span> Available for Hire
+                <span className="status-dot"></span> {isRTL ? 'متاح للانضمام والمشاريع' : 'Available for Hire'}
               </span>
-              <h3>Connect with me</h3>
-              <p>I'm active on LinkedIn, responsive via Email, and regularly publish enterprise engineering work on GitHub.</p>
+              <h3>{content.contact.actionsCardTitle}</h3>
+              <p>{content.contact.actionsCardSubtitle}</p>
             </div>
             
             <div className="contact-links">
               <a href={`mailto:${profile.email}`} className="btn btn-primary btn-block">
-                <Send size={18} style={{ marginRight: '0.5rem' }} /> Email Jamal Directly
+                <Send size={18} style={{ marginInlineEnd: '0.5rem' }} /> {content.contact.emailBtn}
               </a>
               
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-block">
-                <Linkedin size={18} style={{ marginRight: '0.5rem' }} /> Connect on LinkedIn <ArrowRight size={16} style={{ marginLeft: 'auto' }} />
+                <Linkedin size={18} style={{ marginInlineEnd: '0.5rem' }} /> {content.contact.linkedInBtn} 
+                <ArrowRight size={16} className={isRTL ? 'rtl-flip' : ''} style={{ marginInlineStart: 'auto' }} />
               </a>
               
               <a href={profile.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-block">
-                <Github size={18} style={{ marginRight: '0.5rem' }} /> Follow on GitHub <ArrowRight size={16} style={{ marginLeft: 'auto' }} />
+                <Github size={18} style={{ marginInlineEnd: '0.5rem' }} /> {content.contact.githubBtn} 
+                <ArrowRight size={16} className={isRTL ? 'rtl-flip' : ''} style={{ marginInlineStart: 'auto' }} />
               </a>
             </div>
           </div>

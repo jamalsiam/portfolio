@@ -1,5 +1,5 @@
 import React from 'react';
-import { projects } from '../../data/projects';
+import { useLanguage } from '../../hooks/useLanguage';
 import Container from '../layout/Container';
 import SectionTitle from '../common/SectionTitle';
 import AnimatedSection from '../common/AnimatedSection';
@@ -16,26 +16,33 @@ const getProjectIcon = (id) => {
   }
 };
 
-const getProjectHighlight = (id) => {
-  switch(id) {
-    case 'mapp': return '6+ Enterprise Sources Unified · Offline-First';
-    case 'gov-correspondence': return 'High-Security GovTech · Saudi Arabia';
-    case 'epm': return 'Real-Time Multi-Team Analytics · Monorepo';
-    default: return 'Enterprise Scaled Architecture';
+const PROJECT_HIGHLIGHTS = {
+  en: {
+    'mapp': '6+ Enterprise Sources Unified · Offline-First',
+    'gov-correspondence': 'High-Security GovTech · Saudi Arabia',
+    'epm': 'Real-Time Multi-Team Analytics · Monorepo'
+  },
+  ar: {
+    'mapp': 'توحيد 6+ مصادر مؤسسية · عمل دون اتصال',
+    'gov-correspondence': 'تقنية حكومية فائقة الأمان · السعودية',
+    'epm': 'تحليلات فرق متعددة فورية · Monorepo'
   }
 };
 
 const Projects = () => {
+  const { content, language } = useLanguage();
+  const highlights = PROJECT_HIGHLIGHTS[language] || PROJECT_HIGHLIGHTS.en;
+
   return (
     <AnimatedSection id="projects" className="projects-section">
       <Container>
         <SectionTitle 
-          title="Flagship Projects" 
-          subtitle="Deep dive into complex, enterprise-grade systems I've architected and delivered." 
+          title={content.projects.title} 
+          subtitle={content.projects.subtitle} 
         />
         
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {content.projects.items.map((project, index) => (
             <div key={project.id || index} className="project-card">
               {/* Window Titlebar */}
               <div className="project-titlebar">
@@ -53,7 +60,7 @@ const Projects = () => {
                     {getProjectIcon(project.id)}
                   </div>
                   <div className="project-highlight-badge">
-                    <Sparkles size={12} /> {getProjectHighlight(project.id)}
+                    <Sparkles size={12} /> {highlights[project.id] || content.projects.caseStudyBadge}
                   </div>
                 </div>
                 
@@ -61,7 +68,7 @@ const Projects = () => {
                 <p className="project-description">{project.description}</p>
                 
                 <div className="project-features">
-                  <h4>Core Architectural Capabilities</h4>
+                  <h4>{content.projects.capabilitiesLabel}</h4>
                   <ul>
                     {project.features.map((feature, idx) => (
                       <li key={idx}>

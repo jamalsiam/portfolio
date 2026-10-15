@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { experience } from '../../data/experience';
+import { useLanguage } from '../../hooks/useLanguage';
 import Container from '../layout/Container';
 import SectionTitle from '../common/SectionTitle';
 import AnimatedSection from '../common/AnimatedSection';
@@ -13,7 +13,7 @@ const ROLE_TECH_MAP = {
   'smartway': ['Angular Framework', 'Bootstrap', 'HTML5', 'SCSS', 'Moodle']
 };
 
-const ExperienceCard = ({ exp, defaultOpen = false, isCurrent = false }) => {
+const ExperienceCard = ({ exp, defaultOpen = false, isCurrent = false, currentBadge = 'Current Role' }) => {
   const [isExpanded, setIsExpanded] = useState(defaultOpen);
   const isOverlap = Boolean(exp.overlapWith);
   const techList = ROLE_TECH_MAP[exp.id] || [];
@@ -42,7 +42,7 @@ const ExperienceCard = ({ exp, defaultOpen = false, isCurrent = false }) => {
                 <h3 className="experience-role">{exp.role}</h3>
                 {isCurrent && (
                   <span className="current-role-badge">
-                    <span className="current-dot"></span> Current Role
+                    <span className="current-dot"></span> {currentBadge}
                   </span>
                 )}
               </div>
@@ -89,21 +89,24 @@ const ExperienceCard = ({ exp, defaultOpen = false, isCurrent = false }) => {
 };
 
 const Experience = () => {
+  const { content } = useLanguage();
+
   return (
     <AnimatedSection id="experience" className="experience-section">
       <Container>
         <SectionTitle
-          title="Experience Timeline"
-          subtitle="A track record of engineering scalable enterprise platforms and leading development teams."
+          title={content.experience.title}
+          subtitle={content.experience.subtitle}
         />
 
         <div className="timeline-container">
-          {experience.map((exp, index) => (
+          {content.experience.items.map((exp, index) => (
             <ExperienceCard 
               key={exp.id || index} 
               exp={exp} 
               defaultOpen={index === 0}
               isCurrent={index === 0}
+              currentBadge={content.experience.currentBadge}
             />
           ))}
         </div>

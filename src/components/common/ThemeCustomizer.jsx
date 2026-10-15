@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../../hooks/useTheme';
-import { Sun, Moon, Palette, Check } from 'lucide-react';
+import { useLanguage } from '../../hooks/useLanguage';
+import { Sun, Moon, Palette, Check, Globe } from 'lucide-react';
 import './ThemeCustomizer.css';
 
 export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
   const { mode, accent, setMode, setAccent, toggleMode, accentList, currentAccent, modes } = useTheme();
+  const { language, setLanguage, content } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
 
@@ -43,14 +45,14 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
     if (onAction) onAction();
   };
 
-  // If inline (e.g. inside mobile drawer)
+  // If inline (inside mobile drawer)
   if (inline) {
     return (
-      <div className="mobile-theme-panel" aria-label="Theme Customization">
-        <h4 className="mobile-theme-panel-title">Appearance & Theme</h4>
+      <div className="mobile-theme-panel" aria-label={content.theme.appearance}>
+        <h4 className="mobile-theme-panel-title">{content.theme.appearance}</h4>
 
         {/* Mode Toggle */}
-        <div className="theme-mode-toggle" role="radiogroup" aria-label="Color Mode">
+        <div className="theme-mode-toggle" role="radiogroup" aria-label={content.theme.colorMode}>
           <button
             type="button"
             className={`mode-btn ${mode === modes.LIGHT ? 'active' : ''}`}
@@ -58,7 +60,7 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
             aria-checked={mode === modes.LIGHT}
             role="radio"
           >
-            <Sun size={16} /> Light
+            <Sun size={16} /> {content.theme.light}
           </button>
           <button
             type="button"
@@ -67,14 +69,14 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
             aria-checked={mode === modes.DARK}
             role="radio"
           >
-            <Moon size={16} /> Dark
+            <Moon size={16} /> {content.theme.dark}
           </button>
         </div>
 
         {/* Accent Colors */}
         <div className="theme-section">
-          <span className="theme-section-label">Accent Color</span>
-          <div className="accent-swatches-grid" role="radiogroup" aria-label="Accent Color Options">
+          <span className="theme-section-label">{content.theme.accentColor}</span>
+          <div className="accent-swatches-grid" role="radiogroup" aria-label={content.theme.accentColor}>
             {accentList.map((item) => {
               const isSelected = item.id === accent;
               return (
@@ -103,36 +105,61 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
     );
   }
 
-  // Floating Popover for Navbar
+  // Unified Header Preferences Capsule for Desktop Navbar
   return (
     <div className="theme-customizer" ref={containerRef}>
-      <div className="theme-pill">
+      <div className="header-preferences-capsule">
+        {/* Language Switcher Segment */}
+        <div className="pref-lang-group" role="group" aria-label="Language selection">
+          <Globe size={13} className="pref-globe-icon" aria-hidden="true" />
+          <button
+            type="button"
+            className={`pref-lang-btn ${language === 'en' ? 'active' : ''}`}
+            onClick={() => setLanguage('en')}
+            aria-pressed={language === 'en'}
+            title="Switch to English"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            className={`pref-lang-btn ${language === 'ar' ? 'active' : ''}`}
+            onClick={() => setLanguage('ar')}
+            aria-pressed={language === 'ar'}
+            title="التحويل إلى العربية"
+          >
+            عربي
+          </button>
+        </div>
+
+        <span className="pref-divider" aria-hidden="true" />
+
         {/* Quick Mode Toggle */}
         <button
           type="button"
-          className="theme-pill-btn"
+          className="pref-icon-btn"
           onClick={toggleMode}
-          aria-label={`Switch to ${mode === modes.LIGHT ? 'dark' : 'light'} mode`}
-          title={`Switch to ${mode === modes.LIGHT ? 'dark' : 'light'} mode`}
+          aria-label={mode === modes.LIGHT ? `Switch to ${content.theme.dark}` : `Switch to ${content.theme.light}`}
+          title={mode === modes.LIGHT ? content.theme.dark : content.theme.light}
         >
           {mode === modes.LIGHT ? (
-            <Moon size={18} className="icon-moon" />
+            <Moon size={16} className="icon-moon" />
           ) : (
-            <Sun size={18} className="icon-sun" />
+            <Sun size={16} className="icon-sun" />
           )}
         </button>
 
         {/* Palette Customizer Trigger */}
         <button
           type="button"
-          className={`theme-pill-btn ${isOpen ? 'active' : ''}`}
+          className={`pref-icon-btn ${isOpen ? 'active' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-haspopup="dialog"
-          aria-label="Customize accent colors and theme"
-          title="Customize accent colors"
+          aria-label={content.theme.themeSettings}
+          title={content.theme.themeSettings}
         >
-          <Palette size={18} />
+          <Palette size={16} />
           <span
             className="accent-dot-badge"
             style={{ backgroundColor: currentAccent.previewColor }}
@@ -146,11 +173,11 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
           className="theme-popover"
           role="dialog"
           aria-modal="false"
-          aria-label="Theme Preferences"
+          aria-label={content.theme.themeSettings}
         >
           <div className="theme-popover-header">
             <span className="theme-popover-title">
-              <Palette size={16} /> Theme Settings
+              <Palette size={16} /> {content.theme.themeSettings}
             </span>
             <span className="theme-popover-status">
               {currentAccent.name}
@@ -159,8 +186,8 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
 
           {/* Mode Switcher */}
           <div className="theme-section">
-            <span className="theme-section-label">Color Mode</span>
-            <div className="theme-mode-toggle" role="radiogroup" aria-label="Color Mode">
+            <span className="theme-section-label">{content.theme.colorMode}</span>
+            <div className="theme-mode-toggle" role="radiogroup" aria-label={content.theme.colorMode}>
               <button
                 type="button"
                 className={`mode-btn ${mode === modes.LIGHT ? 'active' : ''}`}
@@ -168,7 +195,7 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
                 aria-checked={mode === modes.LIGHT}
                 role="radio"
               >
-                <Sun size={15} /> Light
+                <Sun size={15} /> {content.theme.light}
               </button>
               <button
                 type="button"
@@ -177,15 +204,15 @@ export const ThemeCustomizer = ({ inline = false, onAction = null }) => {
                 aria-checked={mode === modes.DARK}
                 role="radio"
               >
-                <Moon size={15} /> Dark
+                <Moon size={15} /> {content.theme.dark}
               </button>
             </div>
           </div>
 
           {/* Accent Options */}
           <div className="theme-section">
-            <span className="theme-section-label">Accent Theme</span>
-            <div className="accent-swatches-grid" role="radiogroup" aria-label="Accent Themes">
+            <span className="theme-section-label">{content.theme.accentColor}</span>
+            <div className="accent-swatches-grid" role="radiogroup" aria-label={content.theme.accentColor}>
               {accentList.map((item) => {
                 const isSelected = item.id === accent;
                 return (

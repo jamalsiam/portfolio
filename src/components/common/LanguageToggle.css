@@ -1,0 +1,82 @@
+/* ==========================================================================
+   LANGUAGE TOGGLE COMPONENT (DRAWER & STANDALONE)
+   ========================================================================== */
+
+.language-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.25rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  user-select: none;
+}
+
+.language-toggle-pill:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.lang-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  padding: 0 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.language-toggle-pill:hover .lang-icon-wrap {
+  color: var(--accent-color);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: transparent;
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-surface-hover);
+}
+
+.lang-btn.active {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(var(--accent-color-rgb), 0.35);
+}
+
+/* Inline drawer variant */
+.language-toggle-pill.inline {
+  width: 100%;
+  display: flex;
+  padding: 0.35rem;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
+}
+
+.language-toggle-pill.inline .lang-icon-wrap {
+  display: none;
+}
+
+.language-toggle-pill.inline .lang-btn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+}

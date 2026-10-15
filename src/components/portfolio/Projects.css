@@ -176,3 +176,8 @@
   flex-wrap: wrap;
   gap: 0.45rem;
 }
+
+/* RTL Overrides for Projects */
+[dir="rtl"] .project-card::before {
+  transform-origin: right;
+}

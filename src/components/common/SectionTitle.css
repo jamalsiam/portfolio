@@ -37,3 +37,9 @@
     font-size: 2.5rem;
   }
 }
+
+/* RTL Overrides for SectionTitle */
+[dir="rtl"] .section-title::after {
+  left: auto;
+  right: 0;
+}
